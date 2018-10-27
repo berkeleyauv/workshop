@@ -5,4 +5,4 @@ Workshop made for CalHacks 2018
 ```
 pip3 install opencv-python
 ```
-(The Presentation)[https://docs.google.com/presentation/d/10ps0sBYrwQblIyj7yqFLkyl-Vesjm2EtKlcdrAcNPXI/edit?usp=sharing]
+[The Presentation](https://docs.google.com/presentation/d/10ps0sBYrwQblIyj7yqFLkyl-Vesjm2EtKlcdrAcNPXI/edit?usp=sharing)
