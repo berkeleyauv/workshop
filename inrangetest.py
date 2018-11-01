@@ -4,12 +4,15 @@ def nothing(x):
 	pass
 cap = cv2.VideoCapture(0)
 cv2.namedWindow('contours')
-cv2.createTrackbar('hues','contours',0,255,nothing)
-cv2.createTrackbar('sats','contours',0,255,nothing)
-cv2.createTrackbar('vals','contours',0,255,nothing)
-cv2.createTrackbar('huel','contours',0,255,nothing)
-cv2.createTrackbar('satl','contours',0,255,nothing)
-cv2.createTrackbar('vall','contours',0,255,nothing)
+cv2.createTrackbar('blow','contours',0,255,nothing)
+cv2.createTrackbar('glow','contours',0,255,nothing)
+cv2.createTrackbar('rlow','contours',0,255,nothing)
+cv2.createTrackbar('bhigh','contours',0,255,nothing)
+cv2.createTrackbar('ghigh','contours',0,255,nothing)
+cv2.createTrackbar('rhigh','contours',0,255,nothing)
+cv2.setTrackbarPos('bhigh','contours',255)
+cv2.setTrackbarPos('ghigh','contours',255)
+cv2.setTrackbarPos('rhigh','contours',255)
 while(True):
     # Capture frame-by-frame
     _, frame = cap.read()
@@ -18,12 +21,12 @@ while(True):
     #blur = cv2.GaussianBlur(frame, (5, 5), 0)
     hsv = cv2.cvtColor(frame,cv2.COLOR_BGR2HSV)
     
-    hs = cv2.getTrackbarPos('hues','contours')
-    ss = cv2.getTrackbarPos('sats','contours')
-    vs = cv2.getTrackbarPos('vals','contours')
-    hl = cv2.getTrackbarPos('huel','contours')
-    sl = cv2.getTrackbarPos('satl','contours')
-    vl = cv2.getTrackbarPos('vall','contours')
+    hs = cv2.getTrackbarPos('blow','contours')
+    ss = cv2.getTrackbarPos('glow','contours')
+    vs = cv2.getTrackbarPos('rlow','contours')
+    hl = cv2.getTrackbarPos('bhigh','contours')
+    sl = cv2.getTrackbarPos('ghigh','contours')
+    vl = cv2.getTrackbarPos('rhigh','contours')
 
     mask = cv2.inRange(hsv, np.array([hs,ss,vs]), np.array([hl,sl,vl]))
     res = cv2.bitwise_and(frame,frame, mask= mask)
@@ -33,3 +36,4 @@ while(True):
         break
 cap.release()
 cv2.destroyAllWindows()
+#90, 100, 55, 117, 168, 110
