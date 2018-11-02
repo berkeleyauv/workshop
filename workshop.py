@@ -11,7 +11,7 @@ while(True):
     blur = cv2.GaussianBlur(frame, (5, 5), 0)
     hsv = cv2.cvtColor(blur,cv2.COLOR_BGR2HSV)
     ### Color Thresholds
-    mask = cv2.inRange(hsv, np.array([90,100,55]), np.array([117,168,110]))
+    mask = cv2.inRange(hsv, np.array([30,112,0]), np.array([64,255,255]))
     ### Change Here
     res = cv2.bitwise_and(frame,frame, mask= mask)
 
@@ -24,9 +24,9 @@ while(True):
     	cv2.drawContours(frame,[box],0,(0,0,255),5)
     	for corner in boxpts:
         	cv2.circle(frame, (corner[0], corner[1]), 10, (0,0,255), -1)
-    	cv2.imshow('contours', np.hstack((frame,res)))
-    else:
-    	cv2.imshow('contours', frame)
+    cv2.imshow('contours', np.hstack((frame,res)))
+    #else:
+    #	cv2.imshow('contours', frame)
     if cv2.waitKey(1) & 0xFF == ord('q'):
         break
 cap.release()
