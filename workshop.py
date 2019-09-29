@@ -21,7 +21,7 @@ while(True):
     ### Change Here
     res = cv2.bitwise_and(frame,frame, mask= mask)
 
-    contours, hierarchy = cv2.findContours(mask, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
+    im, contours, hierarchy = cv2.findContours(mask, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
     if contours is not None and len(contours) > 0:
         cnt = max(contours, key=lambda x: cv2.minAreaRect(x)[1][0] * cv2.minAreaRect(x)[1][1])
         rect = cv2.minAreaRect(cnt)
